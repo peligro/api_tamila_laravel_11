@@ -150,6 +150,7 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'Firebase\\JWT\\' => 13,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -478,6 +479,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
@@ -556,8 +561,43 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\AccesoController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccesoController.php',
+        'App\\Http\\Controllers\\AnotacionesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AnotacionesController.php',
+        'App\\Http\\Controllers\\CategoriasController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriasController.php',
+        'App\\Http\\Controllers\\CategoriasSlugController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriasSlugController.php',
+        'App\\Http\\Controllers\\ClasificadosAvisosComentariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosAvisosComentariosController.php',
+        'App\\Http\\Controllers\\ClasificadosAvisosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosAvisosController.php',
+        'App\\Http\\Controllers\\ClasificadosAvisosPorCategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosAvisosPorCategoriaController.php',
+        'App\\Http\\Controllers\\ClasificadosAvisosSearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosAvisosSearchController.php',
+        'App\\Http\\Controllers\\ClasificadosAvisosUpdateController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosAvisosUpdateController.php',
+        'App\\Http\\Controllers\\ClasificadosCategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosCategoriaController.php',
+        'App\\Http\\Controllers\\ClasificadosContactoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClasificadosContactoController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MercadoPagoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MercadoPagoController.php',
+        'App\\Http\\Controllers\\MercadoPagoRespuestaController' => __DIR__ . '/../..' . '/app/Http/Controllers/MercadoPagoRespuestaController.php',
+        'App\\Http\\Controllers\\MisDatosController' => __DIR__ . '/../..' . '/app/Http/Controllers/MisDatosController.php',
+        'App\\Http\\Controllers\\PaypalCanceladoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaypalCanceladoController.php',
+        'App\\Http\\Controllers\\PaypalCaptureController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaypalCaptureController.php',
+        'App\\Http\\Controllers\\PaypalController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaypalController.php',
+        'App\\Http\\Controllers\\Productos2Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Productos2Controller.php',
+        'App\\Http\\Controllers\\ProductosBuscarController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductosBuscarController.php',
+        'App\\Http\\Controllers\\ProductosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductosController.php',
+        'App\\Http\\Controllers\\ProductosFotosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductosFotosController.php',
+        'App\\Http\\Controllers\\RegistroController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistroController.php',
+        'App\\Http\\Controllers\\WebpayController' => __DIR__ . '/../..' . '/app/Http/Controllers/WebpayController.php',
+        'App\\Http\\Controllers\\WebpayRespuestaController' => __DIR__ . '/../..' . '/app/Http/Controllers/WebpayRespuestaController.php',
+        'App\\Models\\Anotaciones' => __DIR__ . '/../..' . '/app/Models/Anotaciones.php',
+        'App\\Models\\Categorias' => __DIR__ . '/../..' . '/app/Models/Categorias.php',
+        'App\\Models\\ClaificadosAvisosComentarios' => __DIR__ . '/../..' . '/app/Models/ClaificadosAvisosComentarios.php',
+        'App\\Models\\ClasificadosAvisos' => __DIR__ . '/../..' . '/app/Models/ClasificadosAvisos.php',
+        'App\\Models\\ClasificadosCategorias' => __DIR__ . '/../..' . '/app/Models/ClasificadosCategorias.php',
+        'App\\Models\\OrdenesMercadoPago' => __DIR__ . '/../..' . '/app/Models/OrdenesMercadoPago.php',
+        'App\\Models\\OrdenesPaypal' => __DIR__ . '/../..' . '/app/Models/OrdenesPaypal.php',
+        'App\\Models\\Productos' => __DIR__ . '/../..' . '/app/Models/Productos.php',
+        'App\\Models\\ProductosFotos' => __DIR__ . '/../..' . '/app/Models/ProductosFotos.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\VariablesGlobales' => __DIR__ . '/../..' . '/app/Models/VariablesGlobales.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'BaconQrCode\\Common\\BitArray' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Common/BitArray.php',
@@ -1528,6 +1568,14 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/ValidGenerator.php',
+        'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
+        'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
+        'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
+        'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
+        'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\JWTExceptionWithPayloadInterface' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWTExceptionWithPayloadInterface.php',
+        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
+        'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
