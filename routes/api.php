@@ -25,7 +25,13 @@ use App\Http\Controllers\ClasificadosContactoController;
 use App\Http\Controllers\ClasificadosAvisosSearchController;
 use App\Http\Controllers\ClasificadosAvisosUpdateController;
 use App\Http\Controllers\ClasificadosAvisosComentariosController;
+use App\Http\Controllers\ProveedoresController;
+use App\Http\Controllers\GastosPorDiaController;
 use App\Http\Middleware\Verificacion;
+
+
+Route::resource('proveedores', ProveedoresController::class);
+Route::resource('gastos-por-dia', GastosPorDiaController::class);
 
 
 Route::resource('webpay', WebpayController::class);
