@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Http\Response;
-use App\Models\GastosPorDia;
+use App\Models\GastosFijos;
 use App\Models\Estados;
-class GastosPorDiaController extends Controller
+class GastosFijosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $datos=GastosPorDia::where(['fecha'=>date('Y-m-d')])->orderBy('id', 'desc')->get();
+        $datos=GastosFijos::whereMonth('fecha', '=', date('m'))->orderBy('id', 'desc')->get();
          $array=array();
          foreach($datos as $dato)
          {  
             $array[]=array(
                     "id"=>$dato->id,
-                    "neto"=>$dato->neto,
-                    "iva"=>$dato->iva,
-                    "total"=>$dato->total,
+                    "nombre"=>$dato->nombre,
+                    "monto"=>$dato->monto,
                     "fecha"=>$dato->fecha,
                     "glosa"=>$dato->glosa,
                     "proveedores_id"=>$dato->proveedores_id,
@@ -37,25 +35,39 @@ class GastosPorDiaController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = \Validator::make($request->all(), 
+       $validator = \Validator::make($request->all(), 
         [
             'nombre' => 'required',
             'monto' => 'required|integer',
-            'iva' => 'required|integer',
-            'total' => 'required|integer',
-            'glosa' => 'required',
             'proveedores_id' => 'required',
            
         ],[
             'nombre.required'=>'El campo Nombre está vacío',
             'monto.required'=>'El campo Monto está vacío',
             'monto.integer'=>'El campo Monto debe ser numérico',
-            'iva.required'=>'El campo IVA está vacío',
-            'iva.integer'=>'El campo IVA debe ser numérico',
-            'total.required'=>'El campo Total está vacío',
-            'total.integer'=>'El campo Total debe ser numérico',
+            'proveedores_id.required'=>'El campo proveedores_id está vacío',
         ]);
 
+        if ($validator->fails()) 
+        {
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
+        } 
+        GastosFijos::create
+        (
+            [
+                'nombre'=>$request->nombre,
+                'monto'=>$request->monto,
+                'estados_id'=>2,
+                'proveedores_id'=>$request->proveedores_id,
+                'fecha'=>date("Y-m-d H:i:s")
+            ]
+        );
+         return response()->json(
+            [
+                'estado'=>'OK',
+                'mensaje' => 'Se creó el registro exitosamente'
+            ], Response::HTTP_OK
+        );
     }
 
     /**

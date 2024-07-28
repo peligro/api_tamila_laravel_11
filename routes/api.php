@@ -27,11 +27,17 @@ use App\Http\Controllers\ClasificadosAvisosUpdateController;
 use App\Http\Controllers\ClasificadosAvisosComentariosController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\GastosPorDiaController;
+use App\Http\Controllers\GastosFijosController;
+use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\EstadosController;
 use App\Http\Middleware\Verificacion;
 
 
 Route::resource('proveedores', ProveedoresController::class)->middleware(Verificacion::class);
-Route::resource('gastos-por-dia', GastosPorDiaController::class);
+Route::resource('gastos-por-dia', GastosPorDiaController::class)->middleware(Verificacion::class);
+Route::resource('gastos-fijos', GastosFijosController::class)->middleware(Verificacion::class);
+Route::resource('usuarios', UsuariosController::class)->middleware(Verificacion::class);
+Route::resource('estados', EstadosController::class)->middleware(Verificacion::class);
 
 
 Route::resource('webpay', WebpayController::class);
