@@ -93,6 +93,22 @@ class GastosFijosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $datos=GastosFijos::where(['id'=>$id])->first();
+        if(!is_object($datos))
+        {
+            $array=array
+                (
+                    'estado'=>'error',
+                    'mensaje'=>'No existe el registro',
+                );
+            return response()->json( $array, 404);
+        }
+        GastosFijos::where(['id'=>$id])->delete();
+        return response()->json(
+            [
+                'estado'=>'OK',
+                'mensaje' => 'Se eliminó el registro exitosamente'
+            ], Response::HTTP_OK
+        );
     }
 }
