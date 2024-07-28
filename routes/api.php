@@ -30,7 +30,7 @@ use App\Http\Controllers\GastosPorDiaController;
 use App\Http\Middleware\Verificacion;
 
 
-Route::resource('proveedores', ProveedoresController::class);
+Route::resource('proveedores', ProveedoresController::class)->middleware(Verificacion::class);
 Route::resource('gastos-por-dia', GastosPorDiaController::class);
 
 
