@@ -24,7 +24,9 @@ class GastosFijosController extends Controller
                     "fecha"=>$dato->fecha,
                     "glosa"=>$dato->glosa,
                     "proveedores_id"=>$dato->proveedores_id,
-                    "proveedores"=>$dato->proveedores->nombre
+                    "proveedores"=>$dato->proveedores->nombre,
+                    "estados_id"=>$dato->estados_id,
+                    "estados"=>$dato->estados->nombre
                 );
          }
          return response()->json($array, Response::HTTP_OK);
