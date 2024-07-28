@@ -40,21 +40,20 @@ class GastosPorDiaController extends Controller
         $validator = \Validator::make($request->all(), 
         [
              
-            'monto' => 'required|integer',
+            'neto' => 'required|integer',
             'iva' => 'required|integer',
             'total' => 'required|integer',
             'glosa' => 'required',
             'proveedores_id' => 'required',
            
         ],[ 
-            'monto.required'=>'El campo Monto está vacío',
-            'monto.integer'=>'El campo Monto debe ser numérico',
+            'neto.required'=>'El campo Neto está vacío',
+            'neto.integer'=>'El campo Neto debe ser numérico',
             'iva.required'=>'El campo IVA está vacío',
             'iva.integer'=>'El campo IVA debe ser numérico',
             'total.required'=>'El campo Total está vacío',
             'total.integer'=>'El campo Total debe ser numérico',
-        ]);
-        if ($validator->fails()) 
+        ]);        if ($validator->fails()) 
         {
             return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         } 
@@ -95,15 +94,15 @@ class GastosPorDiaController extends Controller
         $validator = \Validator::make($request->all(), 
         [
              
-            'monto' => 'required|integer',
+            'neto' => 'required|integer',
             'iva' => 'required|integer',
             'total' => 'required|integer',
             'glosa' => 'required',
             'proveedores_id' => 'required',
            
         ],[ 
-            'monto.required'=>'El campo Monto está vacío',
-            'monto.integer'=>'El campo Monto debe ser numérico',
+            'neto.required'=>'El campo Neto está vacío',
+            'neto.integer'=>'El campo Neto debe ser numérico',
             'iva.required'=>'El campo IVA está vacío',
             'iva.integer'=>'El campo IVA debe ser numérico',
             'total.required'=>'El campo Total está vacío',
