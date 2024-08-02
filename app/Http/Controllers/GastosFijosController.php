@@ -16,7 +16,7 @@ class GastosFijosController extends Controller
         $datos=GastosFijos::whereMonth('fecha', '=', date('m'))->orderBy('id', 'desc')->get();
          $array=array();
          foreach($datos as $dato)
-         {  
+         {
             $array[]=array(
                     "id"=>$dato->id,
                     "nombre"=>$dato->nombre,
@@ -37,12 +37,12 @@ class GastosFijosController extends Controller
      */
     public function store(Request $request)
     {
-       $validator = \Validator::make($request->all(), 
+       $validator = \Validator::make($request->all(),
         [
             'nombre' => 'required',
             'monto' => 'required|integer',
             'proveedores_id' => 'required',
-           
+
         ],[
             'nombre.required'=>'El campo Nombre está vacío',
             'monto.required'=>'El campo Monto está vacío',
@@ -50,10 +50,10 @@ class GastosFijosController extends Controller
             'proveedores_id.required'=>'El campo proveedores_id está vacío',
         ]);
 
-        if ($validator->fails()) 
+        if ($validator->fails())
         {
             return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        } 
+        }
         GastosFijos::create
         (
             [
@@ -85,7 +85,56 @@ class GastosFijosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = \Validator::make($request->all(),
+        [
+            'nombre' => 'required',
+            'monto' => 'required|integer',
+            'proveedores_id' => 'required',
+            'estados_id' => 'required',
+
+        ],[
+            'nombre.required'=>'El campo Nombre está vacío',
+            'monto.required'=>'El campo Monto está vacío',
+            'monto.integer'=>'El campo Monto debe ser numérico',
+            'proveedores_id.required'=>'El campo proveedores_id está vacío',
+            'estados_id.required'=>'El campo estados_id está vacío',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
+        }
+        GastosFijos::create
+        (
+            [
+                'nombre'=>$request->nombre,
+                'monto'=>$request->monto,
+                'estados_id'=>2,
+                'proveedores_id'=>$request->proveedores_id,
+                'fecha'=>date("Y-m-d H:i:s")
+            ]
+        );
+        $save=GastosFijos::where(['id'=>$id])->first();
+        if(!is_object($save))
+        {
+            $array=array
+                (
+                    'estado'=>'error',
+                    'mensaje'=>'No existe el registro',
+                );
+            return response()->json( $array, 404);
+        }
+        $save->nombre=$request->nombre;
+        $save->monto=$request->monto;
+        $save->proveedores_id=$request->proveedores_id;
+        $save->estados_id=$request->estados_id;
+        $save->save();
+        return response()->json(
+            [
+                'estado'=>'OK',
+                'mensaje' => 'Se modificó el registro exitosamente'
+            ], Response::HTTP_OK
+        );
     }
 
     /**
