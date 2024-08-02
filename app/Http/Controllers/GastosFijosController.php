@@ -104,16 +104,7 @@ class GastosFijosController extends Controller
         {
             return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
-        GastosFijos::create
-        (
-            [
-                'nombre'=>$request->nombre,
-                'monto'=>$request->monto,
-                'estados_id'=>2,
-                'proveedores_id'=>$request->proveedores_id,
-                'fecha'=>date("Y-m-d H:i:s")
-            ]
-        );
+
         $save=GastosFijos::where(['id'=>$id])->first();
         if(!is_object($save))
         {
